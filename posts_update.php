@@ -13,6 +13,14 @@
     //そのidのユーザーインスタンスを取得
     $post = Post::find($id);
     
+     // ログインユーザー以外の者が投稿をアップデートしようとした場合
+    if($post === false) {
+        header('Location: top.php');
+        exit;
+    } else if($login_user->id !== $post->user_id) {
+        header('Location: top.php');
+    }
+    
     // Postインスタンスの個性を変更
     $post->title = $title;
     $post->content = $content;

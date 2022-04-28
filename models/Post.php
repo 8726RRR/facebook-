@@ -94,7 +94,7 @@
         public static function find($id){
             try {
                 $pdo = self::get_connection();
-                $stmt = $pdo->prepare("SELECT * FROM posts WHERE id=:id");
+                $stmt = $pdo->prepare("SELECT posts.id, posts.user_id, posts.title, posts.content, posts.image, posts.created_at, posts.updated_at, users.name FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id=:id;");
                 // バインド処理
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 // 実行

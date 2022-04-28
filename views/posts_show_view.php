@@ -46,7 +46,7 @@
                 </table>
             </div>
             <!--その投稿が、ログインユーザーが投稿したものであれば-->
-            <?php if($login_user->id === $post->user_id) : ?>
+            <?php if($login_user->id === $post->user_id): ?>
             <div class="row">
                 <a href="posts_edit.php?id=<?= $post->id ?>" class="offset-sm-3 col-sm-6 btn btn-success mt-5">編集</a>
             </div>
@@ -57,8 +57,6 @@
                     <button class="offset-sm-3 col-sm-6 btn btn-danger" type="submit" onclick="return confirm('本当に削除しますか?')">削除</button>
                 </div>
             </form>
-            <!--その投稿がログインユーザーが投稿したものでなければ非表示-->
-            <?php else: ?>
             <?php endif ?>
         </div>
     </body>
